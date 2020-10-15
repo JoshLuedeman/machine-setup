@@ -26,13 +26,25 @@
 
 function Clone-ScriptRepo
 {
-    $srcCntrlDir = New-Item -ItemType Directory -Path (($env:USERPROFILE) + "\source\github\")
-    Set-Location $srcCntrlDir
-    .\git clone https://github.com/JoshLuedeman/machine-setup.git   
+    install-module 'posh-git' -Scope CurrentUser
+    New-Alias -Name git -Value "$Env:ProgramFiles\Git\bin\git.exe"
+    $srcCntrlPath = (($env:USERPROFILE) + "\source\github\")
+    if(Test-Path -LiteralPath $srcCntrlPath)
+    {Write-Host "Script directory already exists"}
+    else
+    {$srcCntrlDir = New-Item -ItemType Directory -Path $srcCntrlPath}
+    Set-Location $srcCntrlPath
+    git clone https://github.com/JoshLuedeman/machine-setup.git   
 }
 
 function Install-VsCode
-{}
+{
+    $installerPath = (($env:USERPROFILE) + "\Downloads\vscode-insiders-installer.exe")
+    Invoke-WebRequest -Uri "https://aka.ms/win32-x64-user-insider" -OutFile $installerPath -UseBasicParsing
+    Start-Process $installerPath.ToString()
+    Write-Host "Press a key when the VS Code Insiders installer is complete...."
+    Read-Host
+}
 
 function Install-AzureDataStudio
 {}
