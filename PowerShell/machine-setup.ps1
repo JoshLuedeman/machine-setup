@@ -24,7 +24,7 @@
     Read-Host
 }
 
-function Clone-ScriptRepo
+function Clone-Repo
 {
     install-module 'posh-git' -Scope CurrentUser
     New-Alias -Name git -Value "$Env:ProgramFiles\Git\bin\git.exe"
@@ -33,17 +33,26 @@ function Clone-ScriptRepo
     {Write-Host "Script directory already exists"}
     else
     {$srcCntrlDir = New-Item -ItemType Directory -Path $srcCntrlPath}
-    Set-Location $srcCntrlPath
+    Set-Location $srcCntrlDir
     git clone https://github.com/JoshLuedeman/machine-setup.git   
+}
+
+function Install-Chocolatey
+{
+    Find-Package -Name Autoruns | Install-Package -Verbose
+    Find-Package -Name Install-Chocolatey | Install-Package -Verbose
+}
+
+function Install-ChocoPackages ($Packages)
+{
+    foreach ($PackageName in $Packages) {
+        choco install $PackageName -y
+    }
 }
 
 function Install-VsCode
 {
-    $installerPath = (($env:USERPROFILE) + "\Downloads\vscode-insiders-installer.exe")
-    Invoke-WebRequest -Uri "https://aka.ms/win32-x64-user-insider" -OutFile $installerPath -UseBasicParsing
-    Start-Process $installerPath.ToString()
-    Write-Host "Press a key when the VS Code Insiders installer is complete...."
-    Read-Host
+
 }
 
 function Install-AzureDataStudio
