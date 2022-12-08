@@ -1,4 +1,7 @@
-﻿function Install-Git
+﻿
+$Packages = Get-Content -Path "Packages.txt"
+
+function Install-Git
 {
     $gitSite = Invoke-WebRequest -Uri https://git-scm.com/download/win -UseBasicParsing
     $linkArray = @($gitSite.Links)
@@ -47,31 +50,17 @@ function Install-ChocoPackages ($Packages)
 {
     foreach ($PackageName in $Packages) {
         choco install $PackageName -y
+        if($PackageName == "wsl2") {
+            wsl --set-default-version 2
+        }
+        if($PackageName == "kubernetes-cli") {
+            Set-Location -Path $env:USERPROFILE
+            New-Item -ItemType Directory ".kube"
+            Set-Location -Path "$env:USERPROFILE\.kube"
+            kubectl 
+        }
     }
 }
-
-function Install-VsCode
-{
-
-}
-
-function Install-AzureDataStudio
-{}
-
-function Install-Python3
-{}
-
-function Install-PowerShellCore
-{}
-
-function Install-WindowsTerminal
-{}
-
-function Enable-Wsl
-{}
-
-function Install-Wsl2
-{}
 
 Clear-Host
 
