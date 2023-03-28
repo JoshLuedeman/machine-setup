@@ -1,4 +1,4 @@
-﻿
+﻿Invoke-WebRequest -Uri https://raw.githubusercontent.com/JoshLuedeman/machine-setup/master/Windows/Packages.txt -OutFile Packages.txt -UseBasicParsing
 $Packages = Get-Content -Path "Packages.txt"
 
 function Install-Git
