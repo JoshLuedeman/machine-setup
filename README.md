@@ -4,7 +4,7 @@ This is a set of scripts I use to configure a new machine when I get it. These s
 ## Machine OS
 | OS | Script Language | Status | Link |
 |-|-|-|-|
-|Windows|PowerShell|*In Development*| [Link](./Windows/README.md) |
+|Windows|PowerShell|**Released**| [Link](./Windows/README.md) |
 |Linux|Bash|*In Planning*| [Link](./Linux/README.md)|
 
 ## Installation
