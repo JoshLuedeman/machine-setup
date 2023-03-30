@@ -43,6 +43,7 @@ function Get-Repo ()
 function Get-Chocolatey 
 {
     Invoke-WebRequest -Uri https://chocolatey.org/install.ps1 -OutFile install.ps1 -UseBasicParsing
+    ./install.ps1
 }
 
 function Install-ChocoPackages ($Packages)
