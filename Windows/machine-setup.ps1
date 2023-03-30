@@ -67,4 +67,7 @@ Clear-Host
 Write-Host("Welcome to my machine provisioner script. This PowerShell script will install the software that I need to make a machine functional for my day-to-day job")
 Write-Host("")
 Write-Host("The first task is to install Git so that we can download the repository of other scripts")
+
 Install-Git
+Install-Chocolatey()
+Install-ChocoPackages($Packages)
