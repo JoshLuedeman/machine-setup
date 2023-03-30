@@ -50,10 +50,10 @@ function Install-ChocoPackages ($Packages)
 {
     foreach ($PackageName in $Packages) {
         choco install $PackageName -y
-        if($PackageName == "wsl2") {
+        if($PackageName -eq "wsl2") {
             wsl --set-default-version 2
         }
-        if($PackageName == "kubernetes-cli") {
+        if($PackageName -eq "kubernetes-cli") {
             Set-Location -Path $env:USERPROFILE
             New-Item -ItemType Directory ".kube"
             Set-Location -Path "$env:USERPROFILE\.kube"
