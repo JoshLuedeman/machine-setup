@@ -40,7 +40,7 @@ function Get-Repo ()
     git clone https://github.com/JoshLuedeman/machine-setup.git   
 }
 
-function Install-Chocolatey ()
+function Get-Chocolatey 
 {
     Find-Package -Name Autoruns | Install-Package -Verbose
     Find-Package -Name Install-Chocolatey | Install-Package -Verbose
@@ -69,5 +69,5 @@ Write-Host("")
 Write-Host("The first task is to install Git so that we can download the repository of other scripts")
 
 Install-Git
-Install-Chocolatey
+Get-Chocolatey
 Install-ChocoPackages($Packages)
