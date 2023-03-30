@@ -42,8 +42,7 @@ function Get-Repo ()
 
 function Get-Chocolatey 
 {
-    Find-Package -Name Autoruns | Install-Package -Verbose
-    Find-Package -Name Install-Chocolatey | Install-Package -Verbose
+    Invoke-WebRequest -Uri https://chocolatey.org/install.ps1 -OutFile install.ps1 -UseBasicParsing
 }
 
 function Install-ChocoPackages ($Packages)
