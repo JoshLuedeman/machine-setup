@@ -8,6 +8,7 @@ wsl2
 wsl-alpine
 wsl-ubuntu-2204
 vscode-insiders
+azure-functions-core-tools
 azure-data-studio
 microsoft-windows-terminal
 minikube
