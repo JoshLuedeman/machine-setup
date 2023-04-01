@@ -1,4 +1,11 @@
-﻿Invoke-WebRequest -Uri https://raw.githubusercontent.com/JoshLuedeman/machine-setup/master/Windows/Packages.txt -OutFile Packages.txt -UseBasicParsing
+﻿If (Test-Path "Packages.txt")
+{
+    Write-Host "Packages.txt already exists. Using Existing File."
+}
+else {
+    Invoke-WebRequest -Uri https://raw.githubusercontent.com/JoshLuedeman/machine-setup/master/Windows/Packages.txt -OutFile Packages.txt -UseBasicParsing
+}
+
 $Packages = Get-Content -Path "Packages.txt"
 
 function Install-Git
