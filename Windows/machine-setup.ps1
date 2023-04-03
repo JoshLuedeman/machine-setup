@@ -10,28 +10,8 @@ $Packages = Get-Content -Path "Packages.txt"
 
 function Install-Git
 {
-    $gitSite = Invoke-WebRequest -Uri https://git-scm.com/download/win -UseBasicParsing
-    $linkArray = @($gitSite.Links)
-
-    foreach($link in $linkArray)
-    {
-        if($link.outerHTML -clike "*64-bit Git for Windows Setup</a>")
-        {
-            $gitDlLink = $link.href
-        }
-        else
-        {}
-    }    
-
-    $gitDlFileName = $gitDlLink.Substring($gitDlLink.LastIndexOf("/")+1,$gitDlLink.Length-$gitDlLink.LastIndexOf("/")-1)
-
-    $gitDlPath = ($env:USERPROFILE)+"\Downloads\"+ $gitDlFileName
-
-    Invoke-WebRequest -Uri $gitDlLink -OutFile $gitDlPath -UseBasicParsing
-
-    Start-Process $gitDlPath.ToString()
-    Write-Host "Press a key when the Git installer is complete...."
-    Read-Host
+    # Removed installer download and using choco instead
+    choco install git -y
 }
 
 function Get-Repo ()
@@ -75,6 +55,7 @@ Write-Host("Welcome to my machine provisioner script. This PowerShell script wil
 Write-Host("")
 Write-Host("The first task is to install Git so that we can download the repository of other scripts")
 
-Install-Git
+
 Get-Chocolatey
+Install-Git
 Install-ChocoPackages($Packages)
