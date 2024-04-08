@@ -12,6 +12,6 @@ azure-functions-core-tools
 azure-data-studio
 microsoft-windows-terminal
 minikube
-spotify
+itunes
 signal
 discord
