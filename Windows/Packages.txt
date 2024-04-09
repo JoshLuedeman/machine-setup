@@ -13,5 +13,8 @@ azure-data-studio
 microsoft-windows-terminal
 minikube
 itunes
+icue
+streamdeck
+obs-studio
 signal
 discord
