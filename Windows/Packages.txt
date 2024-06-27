@@ -11,10 +11,9 @@ vscode-insiders
 azure-functions-core-tools
 azure-data-studio
 microsoft-windows-terminal
+microsoftazurestorageexplorer
 minikube
 itunes
-icue
 streamdeck
-obs-studio
 signal
 discord
